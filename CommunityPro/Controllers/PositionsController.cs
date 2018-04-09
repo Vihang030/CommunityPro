@@ -206,24 +206,31 @@ namespace CommunityPro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,JobCode,Name,Summary")] Position position, string[] selectedOptions)
+        public ActionResult Create([Bind(Include = "ID,JobCode,Name,Summary")] Position position, string[] selectedOptions, string[] selectedQualifications)
         {
             //Add the selected Skills and Qualifications
             if (selectedOptions != null)
             {
                 position.Skills = new List<Skill>();
-                position.Qualifications = new List<Qualification>();
+               
                 foreach (var cond in selectedOptions)
                 {
                     var condToAdd = db.Skills.Find(int.Parse(cond));
                     position.Skills.Add(condToAdd);
                 }
+               
+            }
+
+            if(selectedQualifications != null)
+            {
+                position.Qualifications = new List<Qualification>();
                 foreach (var cond in selectedOptions)
                 {
                     var condToAdd = db.Qualifications.Find(int.Parse(cond));
                     position.Qualifications.Add(condToAdd);
                 }
             }
+
             if (ModelState.IsValid)
             {
                 db.Postions.Add(position);
@@ -259,7 +266,7 @@ namespace CommunityPro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,JobCode,Name,Summary")] Position position, int? id, string[] selectedOptions)
+        public ActionResult Edit([Bind(Include = "ID,JobCode,Name,Summary")] Position position, int? id, string[] selectedOptions, string[] selectedQualifications)
         {
             Position positionToUpdate = db.Postions
                 .Include(p => p.Skills)
@@ -269,7 +276,7 @@ namespace CommunityPro.Controllers
             if (ModelState.IsValid)
             {
                 UpdatePositionSkills(selectedOptions, positionToUpdate);
-                UpdatePositionQualifications(selectedOptions, positionToUpdate);
+                UpdatePositionQualifications(selectedQualifications, positionToUpdate);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -279,15 +286,15 @@ namespace CommunityPro.Controllers
         }
 
         //Method for updating Qualifications for positions
-        private void UpdatePositionQualifications(string[] selectedOptions, Position positionToUpdate)
+        private void UpdatePositionQualifications(string[] selectedQualifications, Position positionToUpdate)
         {
-            if (selectedOptions == null)
+            if (selectedQualifications == null)
             {
                 positionToUpdate.Qualifications = new List<Qualification>();
                 return;
             }
 
-            var selectedOptionsHS = new HashSet<string>(selectedOptions);
+            var selectedOptionsHS = new HashSet<string>(selectedQualifications);
             var positionQua = new HashSet<int>
              (positionToUpdate.Qualifications.Select(c => c.ID));//IDs of the currently selected Qualifications
 
