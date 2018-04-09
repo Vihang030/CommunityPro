@@ -62,6 +62,13 @@
                     </div>
                 </div>
 
+                @*<div class="form-group">
+                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
+                    <div class="col-md-8">
+                        <div class="well" id="Description"></div>
+                    </div>
+                </div>*@
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-12" })
                     <div class="col-md-10">
@@ -87,9 +94,6 @@
                 <hr/>
                 <div class="form-group">
                     <div class="row">
-
-
-
 
                         <div class="col-md-4">
                             <label class="control-label">Schools Available</label>
@@ -138,9 +142,6 @@
                 @*Showing listboxes of Qualifications in posting create*@
                 <div class="form-group">
                     <div class="row">
-
-
-
 
                         <div class="col-md-4">
                             <label class="control-label">Qualifications Available</label>
@@ -192,11 +193,13 @@
 <script type="text/javascript">
     $('#PositionID').change(function () {
         $('#SkillsList').empty();
+        $('#Description').empty();
         var selectedPosition = $("#PositionID").val();
         var URL = "/Postings/GetAPosition/" + selectedPosition;
         $.getJSON(URL, function (data) {
             if (data != null && !jQuery.isEmptyObject(data)) {
                 $('#SkillsList').html(data.Skills);
+                $('#Description').html(data.Summary);
             };
         });
     });
