@@ -66,26 +66,26 @@
             qualifications.ForEach(d => context.Qualifications.AddOrUpdate(n => n.DegreeName, d));
             SaveChanges(context);
 
-            var schools = new List<School>
-            {
-                new School { Name = "Niagara Islamic School" },
-                new School {Name = "Sacred Heart Catholic Elementary School" },
-                new School { Name = "Father Hennepin Catholic Elementary School" },
-                new School { Name = "Saint Michael Catholic High School" },
-                new School { Name = "Our Lady of Mount Carmel Catholic Elementary School" },
-                new School { Name = "Loretto Catholic Elementary School" },
-                new School { Name = "Forestview Public School" },
-                new School { Name = "Princess Margaret Public School" },
-                new School { Name = "Pathways Academy and Early Learning Centre" },
-                new School { Name = "Westlane Secondary School" },
-                new School { Name = "Greendale Public School" },
-                new School { Name = "Cardinal Newman Catholic Elementary School" },
-                new School { Name = "Cherrywood Acres Public School" },
-                new School { Name = "St. Vincent de Paul Catholic Elementary School " }
+            //var schools = new List<School>
+            //{
+            //    new School { Name = "Niagara Islamic School" },
+            //    new School {Name = "Sacred Heart Catholic Elementary School" },
+            //    new School { Name = "Father Hennepin Catholic Elementary School" },
+            //    new School { Name = "Saint Michael Catholic High School" },
+            //    new School { Name = "Our Lady of Mount Carmel Catholic Elementary School" },
+            //    new School { Name = "Loretto Catholic Elementary School" },
+            //    new School { Name = "Forestview Public School" },
+            //    new School { Name = "Princess Margaret Public School" },
+            //    new School { Name = "Pathways Academy and Early Learning Centre" },
+            //    new School { Name = "Westlane Secondary School" },
+            //    new School { Name = "Greendale Public School" },
+            //    new School { Name = "Cardinal Newman Catholic Elementary School" },
+            //    new School { Name = "Cherrywood Acres Public School" },
+            //    new School { Name = "St. Vincent de Paul Catholic Elementary School " }
 
-            };
-            schools.ForEach(d => context.Schools.AddOrUpdate(n => n.Name, d));
-            SaveChanges(context);
+            //};
+            //schools.ForEach(d => context.Schools.AddOrUpdate(n => n.Name, d));
+            //SaveChanges(context);
 
             var skills = new List<Skill>
             {
