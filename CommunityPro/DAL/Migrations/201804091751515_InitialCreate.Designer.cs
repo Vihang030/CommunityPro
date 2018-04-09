@@ -13,7 +13,7 @@ namespace CommunityPro.DAL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201803311909436_InitialCreate"; }
+            get { return "201804091751515_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

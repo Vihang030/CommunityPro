@@ -4,107 +4,94 @@
     ViewBag.Title = "Details";
 }
 
-<h2>@Html.DisplayFor(model => model.Position.Name)</h2>
-<div>
-    <hr />
-    @Html.ActionLink("Apply", "Index" , "Applications?" + " id = Model.ID " +  "" , null ,new { id = Model.ID , @class = "btn btn-primary" })
+<h3 class="alert alert-light">@Html.DisplayFor(model => model.Position.Name) @Html.ActionLink("Apply", "Create/" + Model.ID, "Applications"  + "", null, new { id = Model.ID, @class = "btn btn-primary float-right" })</h3>
+
+ 
     @*<button class="btn btn-primary">Apply</button>*@
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.Name)
-        </dt>
+<div class="data">
+    <div class="row">
 
-        <dd>
-            @Html.DisplayFor(model => model.Position.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SalaryType.Salarytype)
-        </dt>
+        <div class="col-md-2">
+            <dl class="dl-horizontal">
+              <dt>@Html.DisplayNameFor(model => model.Schools)
+               </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SalaryType.Salarytype)
-        </dd>
+                <dd>
+                    @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @class = "form-control", @style = "width:300px;" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NumberOpen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NumberOpen)
-        </dd>
-        
-        <dt>
-
-            @Html.DisplayNameFor(model => model.Schools)
-        </dt>
-
-        <dd>
-            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @class = "form-control", @style = "width:300px;" })
-
-        </dd>
-
-        <br />
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.Skills)
-        </dt>
-
-        <dd>
-            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selSkills, new { @class = "form-control", @style = "width:300px;" })
-
-        </dd>
+                </dd>
 
 
-        <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Position.Skills)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Position.Qualifications)
-        </dt>
+                <dd>
+                    @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selSkills, new { @class = "form-control", @style = "width:300px;" })
 
-        <dd>
-            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selQualifications, new { @class = "form-control", @style = "width:300px;" })
-
-        </dd>
+                </dd>
 
 
-        <br />
+                <dt>
+                    @Html.DisplayNameFor(model => model.Position.Qualifications)
+                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.StartDate)
-        </dt>
+                <dd>
+                    @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selQualifications, new { @class = "form-control", @style = "width:300px;" })
 
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
+                </dd>
+            </dl>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-body">
+                   <h2>@Html.DisplayFor(model => model.Position.Name)</h2><br />
+                    <div class="row">
+             
+                        <div class="col-sm-4">
+                            <b>
+                                @Html.DisplayNameFor(model => model.StartDate): @Html.DisplayFor(model => model.StartDate)<br />
+                                @Html.DisplayNameFor(model => model.ClosingDate): @Html.DisplayFor(model => model.ClosingDate)<br />
+                                </b>
+                        </div>
+       
+                        <div class="col-sm-3 offset-3">
+                            <b>
+                                <br />
+                                @Html.DisplayNameFor(model => model.NumberOpen): @Html.DisplayFor(model => model.NumberOpen) <br />
+                                @Html.DisplayNameFor(model => model.Salary):  @Html.DisplayFor(model => model.Salary)/@Html.DisplayFor(model => model.SalaryType.Salarytype)
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ClosingDate)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ClosingDate)
-        </dd>
+                            </b>
+                        
+                        </div>
+                    </div>
+                      
+<hr />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Details)
-        </dt>
+                  
+                   <b>@Html.DisplayNameFor(model => model.Details)</b><br />
+                    @Html.DisplayFor(model => model.Details)
+                 
 
-        <dd>
-            @Html.DisplayFor(model => model.Details)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Salary)
-        </dt>
+                   
+                </div>
+            </div>
+          
+         
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-4">
+            @Html.ActionLink("Edit", "Edit", null, new { id = Model.ID, @class = "btn btn-primary" })
 
-        <dd>
-            @Html.DisplayFor(model => model.Salary)
-        </dd>
-
-    </dl>
+  
+            @Html.ActionLink("Go Back", "Index", null, new { @class = "btn btn-danger" })
+        </div>
+    </div>
+   
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+        
+    

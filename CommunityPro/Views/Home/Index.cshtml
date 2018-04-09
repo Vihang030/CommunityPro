@@ -1,35 +1,73 @@
-﻿@{
+﻿@using CommunityPro.Models
+@model LoginViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
-    <h1>NCDShool Board</h1>
-    <p class="lead">Jobs Available at Schools</p>
-    <p>@Html.ActionLink("Browse Now", "Index", "Postings", null, new { @class = "btn btn-primary" })</p>
-</div>
+    <div class="row">
+        <div class="col-md-8">
+            <h1>NCDShool Board</h1>
+            <p class="lead">Jobs Available at Schools</p>
+            <p>@Html.ActionLink("Browse Now", "Index", "Postings", null, new { @class = "btn btn-primary" })</p>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                        @Html.AntiForgeryToken()
 
-<div class="card">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Position Avaiable</h2>
-                <p>You can easily find a position avaiable from given list.</p>
-                <p>@Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-primary" })</p>
-            </div>
-            <div class="col-md-4">
-                <h2>Create Your Profile</h2>
-                <p>Create your profile add, edit and remove details.</p>
-                <p>@Html.ActionLink("Applicant", "Index", "Applicant", null, new { @class = "btn btn-primary" })</p>
-            </div>
-            <div class="col-md-4">
-                <h2>Browse Jobs</h2>
-                <p>
-                    Browse Jobs Avaiable For Teaching Postions Now
-                </p>
-                <p>@Html.ActionLink("Positing", "Index", "Positing", null, new { @class = "btn btn-primary" })</p>
-            </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-12 control-label" })
+                            <div class="col-md-12">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, new { @class = "col-md-12 control-label" })
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Log in" class="btn btn-primary" />
+                                @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                @Html.ActionLink("Register as a new user", "Register", null, new { @class = "col-md-6" })
+                            </div>
+                        </div>
 
+                                
+                    }
+
+                </div>
+             
+            </div>
+           
 
         </div>
     </div>
+    
+
+   
+
 </div>
+
+

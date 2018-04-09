@@ -17,17 +17,13 @@ namespace CommunityPro.Models
 
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "You musst select Applicant.")]
+        [Required(ErrorMessage = "You must select Applicant.")]
         public int ApplicantID { get; set; }
 
-        [Required(ErrorMessage = "You musst select Posting.")]
+        [Required(ErrorMessage = "You must select Posting.")]
         public int PostingID { get; set; }
 
-        [Display(Name = "Comments")]
-        [Required(ErrorMessage = "You cannot leave comments blank.")]
-        [StringLength(100, ErrorMessage = "comments cannot be more than 100 characters long.")]
-        public string Comments { get; set; }
-
+       
         public virtual Posting Posting { get; set; }
 
         public virtual Applicant Applicant { get; set; }

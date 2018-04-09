@@ -42,7 +42,6 @@ namespace CommunityPro.DAL.Migrations
                         ID = c.Int(nullable: false, identity: true),
                         ApplicantID = c.Int(nullable: false),
                         PostingID = c.Int(nullable: false),
-                        Comments = c.String(nullable: false, maxLength: 100),
                     })
                 .PrimaryKey(t => t.ID)
                 .ForeignKey("CP.Applicant", t => t.ApplicantID)

@@ -107,11 +107,11 @@ namespace CommunityPro.Controllers
         }
 
         // GET: Applications/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             var UserID = User.Identity.GetUserId();
             ViewBag.UserID = UserID; //new SelectList(db.Applicants, "ID", "FirstName");
-            ViewBag.PostingID = new SelectList(db.Postings, "ID", "Status");
+            ViewBag.PostingID = id; //new SelectList(db.Postings, "ID", "Status");
             return View();
         }
 
@@ -120,7 +120,7 @@ namespace CommunityPro.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ApplicantID,PostingID,Comments")] Application application)
+        public ActionResult Create([Bind(Include = "ID,ApplicantID,PostingID")] Application application)
         {
             if (ModelState.IsValid)
             {

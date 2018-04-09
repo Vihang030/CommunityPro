@@ -4,202 +4,189 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h3 class="alert alert-light">Posting > Job Description</h3>
+<hr />
+
+<div class="data">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-
-
-    @*<hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.PositionID, "Position", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("PositionID", null, "Select a Position", htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })
-        </div>
-    </div>*@
-    <div class="row">
-        <hr />
-        <div class="col-4">
-            <div class="form-horizontal">
-               <hr/> <h4>Posting</h4>
-
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                @Html.HiddenFor(model => model.PositionID)
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NumberOpen, htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NumberOpen, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NumberOpen, "", new { @class = "text-danger" })
-                    </div>
+        @*<hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.PositionID, "Position", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("PositionID", null, "Select a Position", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PositionID, "", new { @class = "text-danger" })
                 </div>
+            </div>*@
+        <div class="row">
+            <div class="col-4">
+                <div class="form-horizontal">
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control datecontrol" } })
-                        @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.PositionID)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NumberOpen, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NumberOpen, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NumberOpen, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ClosingDate, htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.ClosingDate, new { htmlAttributes = new { @class = "form-control datecontrol" } })
-                        @Html.ValidationMessageFor(model => model.ClosingDate, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.StartDate, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control datecontrol" } })
+                            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ClosingDate, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.ClosingDate, new { htmlAttributes = new { @class = "form-control datecontrol" } })
+                            @Html.ValidationMessageFor(model => model.ClosingDate, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Details, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.SalaryTypeID, "SalaryType", htmlAttributes: new { @class = "control-label col-md-12" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("SalaryTypeID", null, htmlAttributes: new { @class = "form-control" })
-                        @Html.ValidationMessageFor(model => model.SalaryTypeID, "", new { @class = "text-danger" })
-                        <hr />
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.Salary, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.SalaryTypeID, "SalaryType", htmlAttributes: new { @class = "control-label col-md-12" })
+                        <div class="col-md-10">
+                            @Html.DropDownList("SalaryTypeID", null, htmlAttributes: new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.SalaryTypeID, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-       
-        <div class="col-8">
 
-            <div class="active">
-                <hr/>
-                <div class="form-group">
-                    <div class="row">
+            <div class="col-8">
 
+                <div class="active">
+                    <div class="form-group">
+                        <div class="row">
+                      <div class="col-md-4">
+                                <label class="control-label">Schools Available</label>
+                                @Html.ListBox("availOptions", (MultiSelectList)ViewBag.availOpts, new { @class = "form-control" })
+                                <button type="button" id="btnLeft" class="btn btn-success btn-sm" style="width:80px; margin-top:10px;">
+                                    <span aria-hidden="true">Add</span>
+                                </button>
+                            </div>
 
+                            <div class="col-md-8">
+                                <label class="control-label">Schools Assigned</label>
+                                @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @class = "form-control" })
+                                <button type="button" id="btnRight" class="btn btn-danger btn-sm" style="width:80px; margin-top:10px;">
+                                    <span aria-hidden="true">Remove</span>
+                                </button>
+                            </div>
 
-
-                        <div class="col-md-4">
-                            <label class="control-label">Schools Available</label>
-                            @Html.ListBox("availOptions", (MultiSelectList)ViewBag.availOpts, new { @class = "form-control" })
-                            <button type="button" id="btnLeft" class="btn btn-success" style="width:80px; margin-top:10px;">
-                                <span aria-hidden="true">Add</span>
-                            </button>
                         </div>
-
-                        <div class="col-md-8">
-                            <label class="control-label">Schools Assigned</label>
-                            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @class = "form-control" })
-                            <button type="button" id="btnRight" class="btn btn-danger" style="width:80px; margin-top:10px;">
-                                <span aria-hidden="true">Remove</span>
-                            </button>
-                        </div>
-
                     </div>
-                </div>
 
-                @*Showing listboxes of skills in posting create*@
-                <div class="form-group">
-                    <div class="row">
+                    @*Showing listboxes of skills in posting create*@
+                    <div class="form-group">
+                        <div class="row">
 
-                        <div class="col-md-4">
-                            <label class="control-label">Skills Available</label>
-                            @Html.ListBox("availSkills", (MultiSelectList)ViewBag.availSkills, new { @class = "form-control" })
-                            <button type="button" id="Left" class="btn btn-success" style="width:80px; margin-top:10px;">
-                                <span aria-hidden="true">Add</span>
-                            </button>
+                            <div class="col-md-4">
+                                <label class="control-label">Skills Available</label>
+                                @Html.ListBox("availSkills", (MultiSelectList)ViewBag.availSkills, new { @class = "form-control" })
+                                <button type="button" id="Left" class="btn btn-success btn-sm" style="width:80px; margin-top:10px;">
+                                    <span aria-hidden="true">Add</span>
+                                </button>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label class="control-label">Skills Assigned</label>
+                                @Html.ListBox("selectedSkills", (MultiSelectList)ViewBag.selSkills, new { @class = "form-control" })
+                                <button type="button" id="Right" class="btn btn-danger btn-sm" style="width:80px; margin-top:10px;">
+                                    <span aria-hidden="true">Remove</span>
+                                </button>
+                            </div>
+
+
+
                         </div>
-
-                        <div class="col-md-8">
-                            <label class="control-label">Skills Assigned</label>
-                            @Html.ListBox("selectedSkills", (MultiSelectList)ViewBag.selSkills, new { @class = "form-control" })
-                            <button type="button" id="Right" class="btn btn-danger" style="width:80px; margin-top:10px;">
-                                <span aria-hidden="true">Remove</span>
-                            </button>
-                        </div>
-
-
-
                     </div>
-                </div>
 
-                @*Showing listboxes of Qualifications in posting create*@
-                <div class="form-group">
-                    <div class="row">
+                    @*Showing listboxes of Qualifications in posting create*@
+                    <div class="form-group">
+                        <div class="row">
 
+                         <div class="col-md-4">
+                                <label class="control-label">Qualifications Available</label>
+                                @Html.ListBox("availQualifications", (MultiSelectList)ViewBag.availQualis, new { @class = "form-control" })
+                                <button type="button" id="qLeft" class="btn btn-success btn-sm" style="width:80px; margin-top:10px;">
+                                    <span aria-hidden="true">Add</span>
+                                </button>
+                            </div>
 
+                            <div class="col-md-8">
+                                <label class="control-label">Qualifications Assigned</label>
+                                @Html.ListBox("selectedQualifications", (MultiSelectList)ViewBag.selQualis, new { @class = "form-control" })
+                                <button type="button" id="qRight" class="btn btn-danger btn-sm" style="width:80px; margin-top:10px;">
+                                    <span aria-hidden="true">Remove</span>
+                                </button>
+                            </div>
 
-
-                        <div class="col-md-4">
-                            <label class="control-label">Qualifications Available</label>
-                            @Html.ListBox("availQualifications", (MultiSelectList)ViewBag.availQualis, new { @class = "form-control" })
-                            <button type="button" id="qLeft" class="btn btn-success" style="width:80px; margin-top:10px;">
-                                <span aria-hidden="true">Add</span>
-                            </button>
                         </div>
-
-                        <div class="col-md-8">
-                            <label class="control-label">Qualifications Assigned</label>
-                            @Html.ListBox("selectedQualifications", (MultiSelectList)ViewBag.selQualis, new { @class = "form-control" })
-                            <button type="button" id="qRight" class="btn btn-danger" style="width:80px; margin-top:10px;">
-                                <span aria-hidden="true">Remove</span>
-                            </button>
-                        </div>
-
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-5">
-                <input type="submit" id="btnSubmit" value="Create" class="btn btn-primary" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    <input type="submit" id="btnSubmit" value="Create" class="btn btn-primary" />
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-5">
-                <input type="reset" id="btnCancel" value="Cancel" class="btn btn-outline-danger" />
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-5">
+                    @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
+                </div>
+             
             </div>
+
         </div>
 
-        <div>
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+
+    }
     </div>
 
 
-}
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/multisel")
 
+        <script type="text/javascript">
+            $('#PositionID').change(function () {
+                $('#SkillsList').empty();
+                var selectedPosition = $("#PositionID").val();
+                var URL = "/Postings/GetAPosition/" + selectedPosition;
+                $.getJSON(URL, function (data) {
+                    if (data != null && !jQuery.isEmptyObject(data)) {
+                        $('#SkillsList').html(data.Skills);
+                    };
+                });
+            });
+        </script>
 
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/multisel")
-
-<script type="text/javascript">
-    $('#PositionID').change(function () {
-        $('#SkillsList').empty();
-        var selectedPosition = $("#PositionID").val();
-        var URL = "/Postings/GetAPosition/" + selectedPosition;
-        $.getJSON(URL, function (data) {
-            if (data != null && !jQuery.isEmptyObject(data)) {
-                $('#SkillsList').html(data.Skills);
-            };
-        });
-    });
-</script>
-
-}
+    }
