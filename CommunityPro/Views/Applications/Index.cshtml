@@ -1,0 +1,96 @@
+﻿
+@model PagedList.IPagedList<CommunityPro.Models.Application>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm("Index", "Applications", FormMethod.Get))
+{
+    <p>
+        <div class="form-horizontal">
+            <button class="btn" type="button" data-toggle="collapse" id="filterToggle" data-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                Filter/Search Applicants
+            </button>
+            <div class="collapse @(ViewBag.Filtering)" id="collapseFilter">
+                <div class="well">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-5">Search Applicant Name: </label>
+                                <div class="col-md-7">
+                                    @Html.TextBox("searchName", null, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-5">Search By Position: </label>
+                                <div class="col-md-7">
+                                    @Html.TextBox("searchPosting", null, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-5"></div>
+                            <div class="col-md-7">
+                                <input type="submit" name="actionButton" value="Filter" class="btn btn-default" /> @Html.ActionLink("Clear", "Index")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </p>
+
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       
+        <th>
+            <input type="submit" name="actionButton" value="Full Name" class="btn btn-link" />
+        </th>
+
+        <th>
+            <input type="submit" name="actionButton" value="Position" class="btn btn-link" />
+        </th>
+        <th>
+            <input type="submit" name="actionButton" value="Comments" class="btn btn-link" />
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Applicant.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Posting.Position.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) 
+        </td>
+    </tr>
+}
+
+</table>
+
+      @:Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortDirection = ViewBag.sortDirection,
+        sortField = ViewBag.sortField,
+        searchName = ViewBag.searchName
+    }))
+}

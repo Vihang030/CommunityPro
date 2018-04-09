@@ -1,0 +1,85 @@
+﻿body {
+    padding-top: 0px;
+    padding-bottom: 20px;
+    background-color: #d8d6db;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+.bg-dark {
+    background-color: #2e2e74 !important;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+/*box for filters*/
+.box {
+    padding: 10px;
+    margin: 10px 6px 10px 6px;
+    border: 1px #eeeeee solid;
+}
+
+.card {
+    padding: 2px;
+    margin: 8px 2px 8px 2px;
+    border: 1px #eeeeee solid;
+}
+
+.form-control {
+    border-radius: 0rem;
+}
+
+.btn {
+    border-radius: 0rem;
+}
+
+.btn-primary {
+    background-color: #2e2e74;
+    border: #2e2e74;
+}
+
+.btn-success {
+    background-color: #3e8424;
+    border: #3e8424;
+}
+
+.navbar-right {
+    position: relative;
+    padding: 0.50rem 1rem;
+    background-color: #3e8424;
+
+}
+
+.navbar-right a {
+        color: #fff;
+        text-decoration: none;
+}
+
+.sort {
+    padding: 10px;
+    background-color: #3e8424;
+}
+.sortby {
+    padding: 10px;
+    border-right: 1px solid #3e8426;    
+}
+
+.sort a {
+    text-decoration: none;
+    color: #fff;
+    border-right: 1px solid #216d05;
+}

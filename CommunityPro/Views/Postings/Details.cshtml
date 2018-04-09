@@ -1,0 +1,110 @@
+﻿
+@model CommunityPro.Models.Posting
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Html.DisplayFor(model => model.Position.Name)</h2>
+<div>
+    <hr />
+    @Html.ActionLink("Apply", "Index" , "Applications?" + " id = Model.ID " +  "" , null ,new { id = Model.ID , @class = "btn btn-primary" })
+    @*<button class="btn btn-primary">Apply</button>*@
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.SalaryType.Salarytype)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalaryType.Salarytype)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOpen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOpen)
+        </dd>
+        
+        <dt>
+
+            @Html.DisplayNameFor(model => model.Schools)
+        </dt>
+
+        <dd>
+            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @class = "form-control", @style = "width:300px;" })
+
+        </dd>
+
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Skills)
+        </dt>
+
+        <dd>
+            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selSkills, new { @class = "form-control", @style = "width:300px;" })
+
+        </dd>
+
+
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position.Qualifications)
+        </dt>
+
+        <dd>
+            @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selQualifications, new { @class = "form-control", @style = "width:300px;" })
+
+        </dd>
+
+
+        <br />
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClosingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClosingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Details)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Details)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Salary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Salary)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

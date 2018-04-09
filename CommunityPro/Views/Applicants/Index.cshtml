@@ -1,0 +1,96 @@
+﻿
+@model PagedList.IPagedList<CommunityPro.Models.Applicant>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+@*<p>
+    @Html.ActionLink("Create New", "Create" , null , new { @class = "hidden"})
+</p>*@
+<div class="box">
+    <form class="form-inline">
+        @Html.TextBox("searchName", null, new { @class = "form-control mr-sm-2", placeholder = "Applicant Name" })
+        @Html.TextBox("searchPhone", null, new { @class = "form-control mr-sm-2", placeholder = "Phone" })
+        <input type="submit" name="actionButton" value="Filter" class="btn btn-primary mr-sm-2" />
+        @Html.ActionLink("Clear", "Index" , null , new { @class = "btn btn-primary"} )
+
+    </form>
+</div>
+
+@using (Html.BeginForm())
+{
+
+
+<table class="table table-striped">
+    <tr>
+        <th>
+            Sort By <input type="submit" name="actionButton" value="Full Name" class="btn btn-default" />
+        </th>
+        <th>
+            <input type="submit" name="actionButton" value="Phone" class="btn btn-default" />
+        </th>
+        <th>
+            <input type="submit" name="actionButton" value="Email" class="btn btn-default" />
+        </th>
+        @*<th>
+            <input type="submit" disabled="disabled" value="Skills" class="btn btn-link" />
+        </th>*@
+        <th></th>
+        <th>
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EMail)
+        </td>
+
+        @*<td>
+            @{
+                foreach (var cond in item.Skills)
+                {
+                    @:  @cond.SkillName <br />
+                }
+            }
+        </td>*@
+
+        <td>
+            @{
+                foreach (var f in item.Files)
+                {
+                    @:  @Html.ActionLink(f.FileName, "Download", new { id = f.ID }) <br />
+                            }
+            }
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+@:Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new
+    {
+        page,
+        sortDirection = ViewBag.sortDirection,
+        sortField = ViewBag.sortField,
+        searchName = ViewBag.searchName
+    }))
+}

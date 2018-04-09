@@ -1,0 +1,71 @@
+﻿@model CommunityPro.Models.Applicant
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<hr />
+<div class="container">
+    <div class="row">
+
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-0 toppad">
+
+
+            <div class="row">
+                <div class="col-md-3 col-lg-3">
+                    @{
+                        if (Model.ApplicantImage != null)
+                        {
+                            string imageBase64 = Convert.ToBase64String(Model.ApplicantImage.imageContent);
+                            string imageSrc = string.Format("data:" + Model.ApplicantImage.imageMimeType + ";base64,{0}", imageBase64);
+                            <img src="@imageSrc" class="img-responsive img-thumbnail" /><br />
+                        }
+                    }
+                </div>
+                <div class="col-md-8 col-lg-8">
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>Full Name:</td>
+                                <td>  @Html.DisplayFor(model => model.FirstName)  @Html.DisplayFor(model => model.MiddleName) @Html.DisplayFor(model => model.LastName)</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>  @Html.DisplayNameFor(model => model.EMail)</td>
+                                <td>   @Html.DisplayFor(model => model.EMail)</td>
+                            </tr>
+                            <tr>
+                                <td> @Html.DisplayNameFor(model => model.Phone)</td>
+                                <td>@Html.DisplayFor(model => model.Phone)</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Qualification.DegreeName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(model => model.Qualification.DegreeName)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.Skills)
+                                </td>
+                                <td>
+                                    @Html.ListBox("selectedOptions", (MultiSelectList)ViewBag.selOpts, new { @class = "form-control" })
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

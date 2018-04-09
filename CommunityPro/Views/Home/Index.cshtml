@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>NCDShool Board</h1>
+    <p class="lead">Jobs Available at Schools</p>
+    <p>@Html.ActionLink("Browse Now", "Index", "Postings", null, new { @class = "btn btn-primary" })</p>
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Position Avaiable</h2>
+                <p>You can easily find a position avaiable from given list.</p>
+                <p>@Html.ActionLink("Positions", "Index", "Position", null, new { @class = "btn btn-primary" })</p>
+            </div>
+            <div class="col-md-4">
+                <h2>Create Your Profile</h2>
+                <p>Create your profile add, edit and remove details.</p>
+                <p>@Html.ActionLink("Applicant", "Index", "Applicant", null, new { @class = "btn btn-primary" })</p>
+            </div>
+            <div class="col-md-4">
+                <h2>Browse Jobs</h2>
+                <p>
+                    Browse Jobs Avaiable For Teaching Postions Now
+                </p>
+                <p>@Html.ActionLink("Positing", "Index", "Positing", null, new { @class = "btn btn-primary" })</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>

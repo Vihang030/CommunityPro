@@ -1,0 +1,96 @@
+﻿@model PagedList.IPagedList<CommunityPro.Models.Position>
+@using PagedList.Mvc
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="box">
+
+    <form class="form-inline">
+        @Html.TextBox("searchName", null, new { @class = "form-control mr-sm-2", placeholder = "Position" })
+        @Html.TextBox("searchJobCode", null, new { @class = "form-control mr-sm-2", placeholder = "Job Code" })
+
+
+        <button type="submit" class="btn btn-primary mr-sm-2">Submit</button>
+       @Html.ActionLink("Clear", "Index", null, new { @class = "btn btn-primary mr-sm-2" })
+        @*<button class="text-hide">
+            @Html.ActionLink("Create New", "Create",null, new { @class = "btn btn-info mr-sm-2" })
+        </button>*@
+    </form>
+</div>
+
+@using (Html.BeginForm("Index", "Positions", FormMethod.Get))
+{
+
+
+
+    <table class="table table-striped">
+        <tr>
+
+            <th>
+                <input type="submit" name="actionButton" value="Job Code" class="btn btn-block" />
+            </th>
+            <th>
+                <input type="submit" name="actionButton" value="Name" class="btn btn-block" />
+            </th>
+            @* <th>
+                    @Html.DisplayNameFor(model => model.Skills)
+                </th>*@
+
+            <th>
+                <input type="submit" name="actionButton" value="Summary" class="btn btn-block" />
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JobCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                        @{
+                            foreach (var cond in item.Skills)
+                            {
+                                @:  @cond.SkillName <br />
+                            }
+                        }
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.SummaryShort)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+
+    @:Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+
+
+
+
+
+
+
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+             new
+             {
+                 page,
+                 sortDirection = ViewBag.sortDirection,
+                 sortField = ViewBag.sortField,
+                 searchName = ViewBag.searchName
+             }))
+
+}
