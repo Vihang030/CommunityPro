@@ -110,6 +110,7 @@ namespace CommunityPro.Controllers
         public ActionResult Create(int? id)
         {
             var UserID = User.Identity.GetUserId();
+            var userName = User.Identity.Name;
             ViewBag.UserID = UserID; //new SelectList(db.Applicants, "ID", "FirstName");
             ViewBag.PostingID = id; //new SelectList(db.Postings, "ID", "Status");
             return View();
