@@ -205,15 +205,15 @@
     <Compile Include="Controllers\SchoolsController.cs" />
     <Compile Include="Controllers\SkillsController.cs" />
     <Compile Include="DAL\CommunityProEntities.cs" />
-    <Compile Include="DAL\Migrations\201803311909436_InitialCreate.cs" />
-    <Compile Include="DAL\Migrations\201803311909436_InitialCreate.Designer.cs">
-      <DependentUpon>201803311909436_InitialCreate.cs</DependentUpon>
+    <Compile Include="DAL\Migrations\201804111514200_InitialCreate.cs" />
+    <Compile Include="DAL\Migrations\201804111514200_InitialCreate.Designer.cs">
+      <DependentUpon>201804111514200_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\Migrations\Configuration.cs" />
     <Compile Include="DAL\ApplicationDbContext.cs" />
-    <Compile Include="DAL\SecurityMigrations\201804020017339_initial.cs" />
-    <Compile Include="DAL\SecurityMigrations\201804020017339_initial.Designer.cs">
-      <DependentUpon>201804020017339_initial.cs</DependentUpon>
+    <Compile Include="DAL\SecurityMigrations\201804111514339_InitialSecurity.cs" />
+    <Compile Include="DAL\SecurityMigrations\201804111514339_InitialSecurity.Designer.cs">
+      <DependentUpon>201804111514339_InitialSecurity.cs</DependentUpon>
     </Compile>
     <Compile Include="DAL\SecurityMigrations\Configuration.cs" />
     <Compile Include="Global.asax.cs">
@@ -494,15 +494,15 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DAL\Migrations\201803311909436_InitialCreate.resx">
-      <DependentUpon>201803311909436_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DAL\SecurityMigrations\201804020017339_initial.resx">
-      <DependentUpon>201804020017339_initial.cs</DependentUpon>
-    </EmbeddedResource>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <EmbeddedResource Include="DAL\Migrations\201804111514200_InitialCreate.resx">
+      <DependentUpon>201804111514200_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DAL\SecurityMigrations\201804111514339_InitialSecurity.resx">
+      <DependentUpon>201804111514339_InitialSecurity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
