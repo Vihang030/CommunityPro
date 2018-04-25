@@ -89,7 +89,7 @@ namespace CommunityPro.Controllers
             ViewBag.sortField = sortField;
             ViewBag.sortDirection = sortDirection;
 
-            int pageSize = 10;
+            int pageSize = 25;
             int pageNumber = (page ?? 1);
 
             return View(positions.ToPagedList(pageNumber, pageSize));
