@@ -22,6 +22,7 @@
                 @Html.ValidationMessageFor(model => model.ApplicantID, "", new { @class = "text-danger" })
             </div>
         </div>
+
         <input type="hidden" name="ApplicantID" value="@ViewBag.UserID", placeholder="@ViewBag.UserID" />
         <div class="form-group">
             <div class="col-md-10">
@@ -30,7 +31,16 @@
                 @Html.ValidationMessageFor(model => model.PostingID, "", new { @class = "text-danger" })
             </div>
         </div>
-
+       
+        <div class="card">
+            <div class="card-header">
+                Review of your Application -  @ViewBag.show
+            </div>
+       <div class="card-body">
+           @ViewBag.showDesc
+       </div>
+        </div>
+       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Apply" class="btn btn-default" />

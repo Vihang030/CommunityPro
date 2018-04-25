@@ -107,16 +107,25 @@ namespace CommunityPro.Controllers
         }
 
         // GET: Applications/Create
+        [Authorize]
         public ActionResult Create(int? id)
         {
             //var UserID = User.Identity.GetUserId();
 
-               int UserID = db.Applicants
+               Posting posting = db.Postings
+              .Where(p => p.ID == id)
+               .SingleOrDefault();
+
+            ViewBag.show = posting.Position.Name;
+            ViewBag.showDesc = posting.Position.Summary;
+
+
+            int UserID = db.Applicants
                .Where(i => i.EMail == User.Identity.Name.ToString())
                .Select(i => i.ID)
                .SingleOrDefault();
 
-            ViewBag.UserID = UserID;
+            ViewBag.UserID = UserID; 
             ViewBag.PostingID = id;
             return View();
         }
