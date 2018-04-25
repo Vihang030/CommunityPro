@@ -7,13 +7,13 @@ namespace CommunityPro.DAL.SecurityMigrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class initial : IMigrationMetadata
+    public sealed partial class InitialSecurity : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialSecurity));
         
         string IMigrationMetadata.Id
         {
-            get { return "201804020017339_initial"; }
+            get { return "201804091750215_InitialSecurity"; }
         }
         
         string IMigrationMetadata.Source

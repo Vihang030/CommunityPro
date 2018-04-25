@@ -540,11 +540,11 @@ namespace CommunityPro.Controllers
 
                 foreach (var s in position.Skills)
                 {
-                    Skills += "<ul class='list-group'><li class='list-group-item disabled col-md-2'>" + s.SkillName + "</li></ul>";
+                    Skills += "<ul class='list-group'><li class='list-group-item disabled col-md-12'> &#45; " + s.SkillName + "</li></ul>";
                 }
                 foreach (var s in position.Qualifications)
                 {
-                    Qualifications += "<ul class='list-group'><li class='list-group-item disabled col-md-2'>" + s.DegreeName + "</li></ul>";
+                    Qualifications += "<ul class='list-group'><li class='list-group-item disabled col-md-12'>&#45; " + s.DegreeName + "</li></ul>";
                 }
                 //Using an annomous object as a DTO to avoid serialization errors
                 var pos = new

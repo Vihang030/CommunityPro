@@ -4,56 +4,78 @@
     ViewBag.Title = "CreateStart";
 }
 
-<h2>CreateStart</h2>
+<h3 class="alert alert-light">Posting</h3>
+<hr />
 
-
-@using (Html.BeginForm("Create", "Postings", FormMethod.Get, null))
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <div class="form-group">
-            <label class="control-label col-md-4 font-weight-bold">Position:</label>
-            <div class="col-md-7">
-                @Html.DropDownList("PositionID", null, "Select a Position", htmlAttributes: new { @class = "form-control" })
+    <div class="data">
+        @using (Html.BeginForm("Create", "Postings", FormMethod.Get, null))
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label class="control-label col-md-4 font-weight-bold">Position:</label>
+                <div class="col-md-7">
+                    @Html.DropDownList("PositionID", null, "Select a Position", htmlAttributes: new { @class = "form-control" })
+                </div>
             </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12 col-lg-12">
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Details, htmlAttributes: new { @class = "control-label col-md-2 font-weight-bold" })
-                    <div class="col-md-8">
-                        <div class="well" id="Description"></div>
+            <div class="row">
+                <div class="col-6">
+                    
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-12 font-weight-bold">Skills Required</label>
+                                    <span id="SkillsList"></span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label class="control-label col-md-12 font-weight-bold">Qualifications Required</label>
+                                    <span id="QualificationsList"></span>
+                            </div>
+                        </div>
+                    </div>
+                   
+                   
+
+                   
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label class="control-label col-md-12 font-weight-bold">Job Description</label>
+                        <div class="col-md-8">
+                                 <div class="jumbotron" id="Description"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-horizontal">
+               
+
+                <div class="row">
+                    <div class="col-md-12 col-lg-12">
+                      
+
+                      
                     </div>
                 </div>
 
+                <br />
                 <div class="form-group">
-                    <label class="control-label col-md-2 font-weight-bold">Skills Required</label>
-                    <div class="col-md-8">
-                          <span id="SkillsList"></span>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-md-2 font-weight-bold">Qualifications Required</label>
-                    <div class="col-md-8">
-                        <span id="QualificationsList"></span>
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Next" class="btn btn-primary" />
+                        @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger"})
                     </div>
                 </div>
             </div>
-        </div>
+        }
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Next" class="btn btn-primary" />
-            </div>
-        </div>
     </div>
-}
+
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+  
 </div>
 
 @section Scripts {
